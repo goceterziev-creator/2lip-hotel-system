@@ -1,0 +1,21 @@
+// ⚙️ server.js
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.static('public'));
+app.use(express.json());
+
+// 🏨 API endpoints
+app.get('/api/rooms', (req, res) => {
+    res.json({
+        rooms: [
+            { id: 1, name: "Стандарт стая", price: 100, available: true },
+            { id: 2, name: "Луксозна стая", price: 200, available: true }
+        ]
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`🎪 2L1P Hotel System running on port ${PORT}`);
+});
