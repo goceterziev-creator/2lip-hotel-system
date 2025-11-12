@@ -1,4 +1,4 @@
-// 🎪 2L1P ULTIMATE HOTEL SYSTEM - FIXED VERSION
+// 🎪 2L1P ULTIMATE HOTEL SYSTEM - STABLE VERSION
 class UltimateBookingSystem {
     constructor() {
         this.availableRooms = [];
@@ -67,6 +67,8 @@ class UltimateBookingSystem {
     }
     
     initializeEventListeners() {
+        console.log('🎯 Инициализиране на event listeners...');
+        
         // Форма за резервации
         const form = document.getElementById('reservationForm');
         if (form) {
@@ -74,6 +76,7 @@ class UltimateBookingSystem {
                 e.preventDefault();
                 this.handleFormSubmission();
             });
+            console.log('✅ Формата за резервации е закачена');
         }
         
         // Автоматично изчисление
@@ -86,32 +89,10 @@ class UltimateBookingSystem {
                 });
             }
         });
-        
-        // Административни бутони
-        this.setupAdminButtons();
+        console.log('✅ Автоматичното изчисление е закачено');
         
         // Инициализиране на summary
         setTimeout(() => this.updateReservationSummary(), 100);
-    }
-    
-    setupAdminButtons() {
-        // 📊 Всички резервации
-        const allBookingsBtn = document.querySelector('.btn-admin:nth-child(1)');
-        if (allBookingsBtn) {
-            allBookingsBtn.addEventListener('click', showAllBookings);
-        }
-        
-        // 📈 Статистики
-        const statsBtn = document.querySelector('.btn-admin:nth-child(2)');
-        if (statsBtn) {
-            statsBtn.addEventListener('click', showAdminStats);
-        }
-        
-        // 💰 Търсене по бюджет
-        const budgetBtn = document.querySelector('.btn-admin:nth-child(3)');
-        if (budgetBtn) {
-            budgetBtn.addEventListener('click', searchByBudget);
-        }
     }
     
     calculateNights(checkIn, checkOut) {
@@ -216,7 +197,7 @@ class UltimateBookingSystem {
             document.getElementById('adults').value = '2';
             document.getElementById('children2').value = '0';
             document.getElementById('children12').value = '0';
-            document.getElementById('roomType').value = '';
+            document.getElementById('roomType').selectedIndex = 0;
             
             // Нулираме summary
             setTimeout(() => this.updateReservationSummary(), 100);
@@ -319,7 +300,7 @@ class UltimateBookingSystem {
     }
 }
 
-// 🚀 Глобални функции
+// 🚀 Глобални функции - СТАБИЛНА ВЕРСИЯ
 function showAllBookings() {
     try {
         const bookings = ultimateSystem.getBookings();
@@ -334,13 +315,15 @@ function showAllBookings() {
             message += `${index + 1}. 👤 ${booking.guest.name}\n`;
             message += `   📧 ${booking.guest.email || 'Няма имейл'}\n`;
             message += `   🏨 ${booking.roomName}\n`;
-            message += `   💰 ОБЩО: ${booking.totalPrice} лв (${booking.nights} нощи)\n`;
+            message += `   💰 ОБЩА СТОЙНОСТ: ${booking.totalPrice} лв (${booking.pricePerNight} лв/нощ × ${booking.nights} нощи)\n`;
             message += `   📅 ${booking.dates.checkIn} до ${booking.dates.checkOut}\n`;
             message += `   👥 ${booking.guests.adults} възрастни, ${booking.guests.childrenUnder2} деца (0-2), ${booking.guests.children2to12} деца (2-12)\n`;
             message += `   ⏰ ${new Date(booking.timestamp).toLocaleString('bg-BG')}\n\n`;
         });
         
-        message += `💰 ОБЩ ПРИХОД: ${bookings.reduce((sum, b) => sum + b.totalPrice, 0)} лв`;
+        const totalRevenue = bookings.reduce((sum, b) => sum + b.totalPrice, 0);
+        message += `💰 ОБЩ ПРИХОД ОТ ВСИЧКИ РЕЗЕРВАЦИИ: ${totalRevenue} лв`;
+        
         alert(message);
     } catch (error) {
         alert('❌ Грешка при показване на резервациите');
@@ -354,11 +337,11 @@ function showAdminStats() {
         
         const message = `📊 АДМИН СТАТИСТИКИ:\n
 🏨 Общо резервации: ${stats.totalBookings}
-💰 Общ приход: ${stats.totalRevenue} лв
+💰 ОБЩ ПРИХОД: ${stats.totalRevenue} лв
 ✅ Потвърдени: ${stats.confirmedBookings}
 📈 Средна стойност: ${stats.averageRevenue.toFixed(2)} лв/резервация
 
-🌟 2L1P Hotel System - Стабилна и надеждна!`;
+💫 2L1P Hotel System - Стабилна и надеждна!`;
 
         alert(message);
     } catch (error) {
@@ -398,11 +381,28 @@ function searchByBudget() {
     }
 }
 
-// 🎪 Инициализация
+// 🎪 СТАБИЛНА ИНИЦИАЛИЗАЦИЯ
 let ultimateSystem;
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 2L1P Hotel System зарежда се...');
-    ultimateSystem = new UltimateBookingSystem();
-    console.log('✅ 2L1P Hotel System зареден успешно!');
+    try {
+        ultimateSystem = new UltimateBookingSystem();
+        console.log('✅ 2L1P Hotel System зареден успешно!');
+        
+        // Ръчно закачане на бутоните за сигурност
+        const adminButtons = document.querySelectorAll('.btn-admin');
+        adminButtons.forEach((btn, index) => {
+            btn.onclick = function() {
+                if (index === 0) showAllBookings();
+                if (index === 1) showAdminStats();
+                if (index === 2) searchByBudget();
+            };
+        });
+        console.log('✅ Бутоните са закачени ръчно за сигурност');
+        
+    } catch (error) {
+        console.error('❌ Грешка при зареждане на системата:', error);
+        alert('❌ Грешка при зареждане на системата. Моля, презаредете страницата.');
+    }
 });
