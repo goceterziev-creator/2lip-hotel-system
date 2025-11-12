@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2L1P HOTEL MANAGEMENT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🎪 2L1P HOTEL SYSTEM</h1>
+        <p>Система за резервации - Румъния</p>
+    </header>
+    
+    <main>
+        <!-- Форма за резервации -->
+        <section id="booking-form">
+            <h2>🎯 Резервирай сега</h2>
+            <div class="booking-form">
+                <form id="reservationForm">
+                    <div class="form-group">
+                        <label for="guestName">Име на гост:</label>
+                        <input type="text" id="guestName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkIn">Настаняване:</label>
+                        <input type="date" id="checkIn" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="checkOut">Освобождаване:</label>
+                        <input type="date" id="checkOut" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="roomType">Тип стая:</label>
+                        <select id="roomType" required>
+                            <option value="standard">Стандарт (100лв)</option>
+                            <option value="luxury">Лукс (200лв)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-book">🎯 Резервирай сега</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Хотели -->
+        <section id="hotelsContainer"></section>
+
+        <!-- Стаи -->
+        <section id="roomsContainer"></section>
+
+        <!-- Административни бутони -->
+        <div class="admin-panel">
+            <button onclick="showAllBookings()" class="btn-admin">📊 Всички резервации</button>
+            <button onclick="showAdminStats()" class="btn-admin">📈 Статистики</button>
+            <button onclick="searchByBudget()" class="btn-admin">💰 Търсене по бюджет</button>
+        </div>
+    </main>
+
+    <script src="ultimate-hotel-system.js"></script>
+</body>
+</html>
