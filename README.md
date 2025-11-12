@@ -3,7 +3,7 @@
 AI-powered hotel reservation system for Romania
 
 ## 🚀 Quick Start
-1. Visit: [https://goceterziev-creator.github.io/2lip-hotel-system/]
+1. Visit: https://goceterziev-creator.github.io/2lip-hotel-system/
 2. Make reservation
 3. Enjoy Romania!
 
