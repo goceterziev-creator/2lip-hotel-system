@@ -13,35 +13,98 @@
     </header>
     
     <main>
-        <!-- Форма за резервации -->
+        <!-- 📝 НОВА ПРОФЕСИОНАЛНА ФОРМА -->
         <section id="booking-form">
             <h2>🎯 Резервирай сега</h2>
             <div class="booking-form">
                 <form id="reservationForm">
+                    <!-- Лични данни -->
                     <div class="form-group">
-                        <label for="guestName">Име на гост:</label>
-                        <input type="text" id="guestName" required>
+                        <label for="guestName">👤 Име и фамилия:</label>
+                        <input type="text" id="guestName" placeholder="Въведете вашето име" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="checkIn">Настаняване:</label>
-                        <input type="date" id="checkIn" required>
+                        <label for="guestEmail">📧 Имейл:</label>
+                        <input type="email" id="guestEmail" placeholder="вашият@имейл.com" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="checkOut">Освобождаване:</label>
-                        <input type="date" id="checkOut" required>
+                    <!-- Дати -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkIn">📅 Настаняване:</label>
+                            <input type="date" id="checkIn" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkOut">📅 Освобождаване:</label>
+                            <input type="date" id="checkOut" required>
+                        </div>
                     </div>
                     
+                    <!-- Хора -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adults">👨‍👩‍👧‍👦 Възрастни:</label>
+                            <select id="adults" required>
+                                <option value="1">1 възрастен</option>
+                                <option value="2" selected>2 възрастни</option>
+                                <option value="3">3 възрастни</option>
+                                <option value="4">4 възрастни</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="children2">🍼 Деца (0-2г.):</label>
+                            <select id="children2">
+                                <option value="0">0 деца</option>
+                                <option value="1">1 дете</option>
+                                <option value="2">2 деца</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="children12">🧒 Деца (2-12г.):</label>
+                            <select id="children12">
+                                <option value="0">0 деца</option>
+                                <option value="1">1 дете</option>
+                                <option value="2">2 деца</option>
+                                <option value="3">3 деца</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Тип стая -->
                     <div class="form-group">
-                        <label for="roomType">Тип стая:</label>
+                        <label for="roomType">🏨 Тип стая:</label>
                         <select id="roomType" required>
-                            <option value="standard">Стандарт (100лв)</option>
-                            <option value="luxury">Лукс (200лв)</option>
+                            <option value="">-- Изберете стая --</option>
+                            <option value="standard" data-price="100">Стандарт стая - 100лв/нощ</option>
+                            <option value="luxury" data-price="200">Луксозна стая - 200лв/нощ</option>
+                            <option value="family" data-price="150">Семейна стая - 150лв/нощ</option>
                         </select>
                     </div>
                     
-                    <button type="submit" class="btn-book">🎯 Резервирай сега</button>
+                    <!-- Детайли за резервацията -->
+                    <div class="reservation-summary">
+                        <h3>📊 Детайли на резервацията:</h3>
+                        <div class="summary-item">
+                            <span>Брой нощувки:</span>
+                            <span id="nightsCount">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Цена за нощувка:</span>
+                            <span id="pricePerNight">0 лв</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>🧮 ОБЩА СУМА:</span>
+                            <span id="totalPrice">0 лв</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-book">🎯 Потвърди резервацията</button>
                 </form>
             </div>
         </section>
