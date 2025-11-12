@@ -1,12 +1,14 @@
 # 🏨 2L1P Hotel Management System
 
-## Quick Start
-1. Install: `npm install`
-2. Start: `npm start` 
-3. Open: `http://localhost:3000`
+AI-powered hotel reservation system for Romania
 
-## Features
-- Room reservations
+## 🚀 Quick Start
+1. Visit: [LINK]
+2. Make reservation
+3. Enjoy Romania!
+
+## 🌟 Features
+- Smart booking system
+- Multiple hotels
 - Real-time availability
 - Mobile responsive
-- Romania-focused
