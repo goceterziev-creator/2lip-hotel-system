@@ -1,4 +1,4 @@
-/* 🎨 2L1P HOTEL SYSTEM STYLES */
+/* 🎨 2L1P HOTEL SYSTEM STYLES - MOBILE OPTIMIZED */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -53,6 +53,7 @@ header p {
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
+    box-sizing: border-box; /* Важно за mobile */
 }
 
 .form-group input:focus,
@@ -62,7 +63,7 @@ header p {
     outline: none;
 }
 
-/* 📱 Нови стилове за формата */
+/* 📱 MOBILE FIXES */
 .form-row {
     display: flex;
     gap: 1rem;
@@ -216,10 +217,16 @@ header p {
     background: #2c3e50;
 }
 
-/* 📱 Mobile responsive */
+/* 🎯 MOBILE OPTIMIZATION */
 @media (max-width: 768px) {
     body {
         padding: 10px;
+    }
+    
+    .booking-form {
+        margin: 0 10px;
+        padding: 1rem;
+        max-width: 100%;
     }
     
     .form-row {
@@ -227,15 +234,75 @@ header p {
         gap: 0.5rem;
     }
     
+    .form-group input,
+    .form-group select {
+        font-size: 16px;
+        padding: 0.7rem;
+    }
+    
+    .reservation-summary {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
     .admin-panel {
         flex-direction: column;
+        gap: 0.5rem;
+        margin: 1rem 10px;
+    }
+    
+    .btn-admin {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #hotelsContainer,
+    #roomsContainer {
+        margin: 2rem 10px;
+        padding: 1rem;
     }
     
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
-    .booking-form {
-        padding: 1rem;
+    header p {
+        font-size: 1rem;
     }
+}
+
+/* 📱 EXTRA SMALL SCREENS */
+@media (max-width: 480px) {
+    .booking-form {
+        padding: 0.8rem;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 0.6rem;
+        font-size: 14px;
+    }
+    
+    .btn-book {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .reservation-summary h3 {
+        font-size: 1.1rem;
+    }
+    
+    .summary-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* 🎯 FIX FOR MOBILE INPUTS */
+input[type="date"],
+select {
+    min-height: 44px;
+}
+
+select {
+    background-color: white;
 }
